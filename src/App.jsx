@@ -1,39 +1,77 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import PostCard from './components/postcard';
 
 function App() {
+  const styles = {
+    app: {
+      minHeight: '100vh',
+      backgroundColor: '#f0f2f5',
+      padding: '20px',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center' 
+    },
+    appHeader: {
+      textAlign: 'center',
+      marginBottom: '32px',
+      width: '100%'
+    },
+    heading: {
+      color: '#1a1a1a',
+      fontSize: '2rem',
+      margin: 0
+    },
+    feedContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      maxWidth: '600px',
+      width: '100%',
+      margin: '0 auto',
+      gap: '20px',
+      padding: '0 20px'
+    }
+  };
 
-  const initialPosts = [
+  // Sample posts data
+  const posts = [
     {
       id: 1,
-      profileImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg',
-      username: 'alice',
-      content: 'This is my first post!',
-      isLiked: false,
+      username: "JohnDoe",
+      profilePicture: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+      content: "Just finished my morning workout! 💪 Starting the day with positive energy!",
+      timestamp: "2 hours ago",
+      image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
     },
     {
       id: 2,
-      profileImage: 'https://writestylesonline.com/wp-content/uploads/2016/08/Follow-These-Steps-for-a-Flawless-Professional-Profile-Picture.jpg',
-      username: 'bob',
-      content: 'Loving this social media app.',
-      isLiked: true,
+      username: "EmmaWatson",
+      profilePicture: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+      content: "Beautiful sunset at the beach today! 🌅 Nature never fails to amaze me.",
+      timestamp: "5 hours ago",
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
     },
     {
       id: 3,
-      profileImage: 'https://png.pngtree.com/png-clipart/20230927/original/pngtree-man-avatar-image-for-profile-png-image_13001882.png',
-      username: 'charlie',
-      content: 'Just another day...',
-      isLiked: false,
-    },
+      username: "TechGuy",
+      profilePicture: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3",
+      content: "Just launched my new coding project! Check it out and let me know what you think! 🚀 #coding #webdev",
+      timestamp: "1 day ago"
+    }
   ];
 
   return (
-    <>
-      
-    </>
-  )
+    <div style={styles.app}>
+      <header style={styles.appHeader}>
+        <h1 style={styles.heading}>Social Feed</h1>
+      </header>
+      <main style={styles.feedContainer}>
+        {posts.map((post) => (
+          <PostCard key={post.id} post={post} />
+        ))}
+      </main>
+    </div>
+  );
 }
 
-export default App
+export default App;
